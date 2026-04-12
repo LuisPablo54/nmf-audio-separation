@@ -4,7 +4,7 @@
 
 [![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](https://colab.research.google.com/github/USUARIO/audio-nmf-separation/blob/main/notebooks/01_BCGD_implementation.ipynb)
+
 
 ## 📖 Descripción
 Este proyecto implementa la separación de fuentes de audio monoaural utilizando Factorización de Matrices No Negativas (NMF) optimizada mediante Block-Coordinate Gradient Descent (BCGD). El objetivo es desmezclar señales de voz y ruido combinadas digitalmente, comparando la convergencia y calidad de reconstrucción entre el Descenso de Gradiente (GD) estándar, Momentum y Nesterov Accelerated Gradient (NAG).

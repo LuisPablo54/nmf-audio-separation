@@ -1,0 +1,4 @@
+category,n_archivos,dur_total_min,dur_media_s,dur_std_s,dur_min_s,dur_max_s,sr_comun_hz,canales,rms_media,zcr_media,centroide_hz,bandwidth_hz,rolloff_hz,stft_F,stft_T_media,tamano_MB
+music,30,100.61,201.23,116.8,81.87,702.54,16000,1,0.15369,0.06806,1309.7,1391.7,2637.0,513,1292,193.2
+noise,30,8.1,16.2,18.0,0.81,76.17,16000,1,0.1174,0.13536,2132.3,1845.3,4118.7,513,568,15.6
+speech,30,272.66,545.32,157.07,126.12,784.04,16000,1,0.09353,0.08699,1373.6,1165.1,2547.8,513,1292,523.5
