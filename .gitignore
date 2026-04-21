@@ -42,6 +42,8 @@ venv.bak/
 *.ipynb
 # PERO permitir explícitamente los de la carpeta notebooks/
 !notebooks/
+!data_cleaning/
+!data_cleaning/**/*.ipynb
 !notebooks/**/*.ipynb
 .colab/
 drive/
@@ -51,6 +53,7 @@ drive/
 # ========================
 # No subir la carpeta de datos crudos ni el corpus MUSAN
 data/
+mixed_audio/
 musan/
 # No subir archivos de audio individuales en ninguna parte del repo
 *.wav
