@@ -10,6 +10,14 @@
 Este proyecto implementa la separación de fuentes de audio monoaural utilizando Factorización de Matrices No Negativas (NMF) optimizada mediante Block-Coordinate Gradient Descent (BCGD). El objetivo es desmezclar señales de voz y ruido combinadas digitalmente, comparando la convergencia y calidad de reconstrucción entre el Descenso de Gradiente (GD) estándar, Momentum y Nesterov Accelerated Gradient (NAG).
 </div> 
 
+## Cómo ejecutar
+```bash
+git clone <repo>
+cd nmf-audio-separation
+pip install -r requirements.txt
+python main.py
+```
+
 ## ⚙️ Pipeline del Proyecto
 
 1. **Carga de Datos:** Lectura de señales independientes de voz y ruido desde el corpus MUSAN.
