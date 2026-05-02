@@ -101,13 +101,15 @@ def load_and_process_dataset(data_root, categories, n_per_cat, sr_target, n_fft,
         df = pd.read_csv(csv_path)
         stft_data = np.load(stft_file, allow_pickle=True)
         df['stft_matrix'] = [stft_data[f] for f in df['filename']]
-        return df
+        return df  # ← No se necesita eliminar columnas aquí
+
     print("Escaneando archivos...")
     df_files = scan_files(data_root, categories, n_per_cat)
     print(f"Procesando {len(df_files)} archivos en paralelo...")
     partial_analyze = partial(analyze_file, sr_target=sr_target, n_fft=n_fft, hop_length=hop_length)
     with Pool() as pool:
         results = list(tqdm(pool.imap(partial_analyze, df_files['path']), total=len(df_files)))
+
     records = []
     stft_dict = {}
     for meta, row in zip(results, df_files.to_dict('records')):
@@ -116,12 +118,16 @@ def load_and_process_dataset(data_root, categories, n_per_cat, sr_target, n_fft,
             stft_dict[row['filename']] = stft
             meta.update(row)
             records.append(meta)
+
     df = pd.DataFrame(records)
     df_ok = df[df['ok'] == True].copy()
     print(f"{len(df_ok)}/{len(df_files)} archivos OK")
+
+    # Guardar CSV sin la columna de matrices (no serializable) y las matrices por separado
     df_ok_no_stft = df_ok.drop(columns=['stft_matrix'])
     df_ok_no_stft.to_csv(csv_path, index=False)
     np.savez_compressed(stft_file, **stft_dict)
+
     return df_ok
 
 # ==================== ALGORITMO UNIFIED BCGD (MEJORADO) ====================
