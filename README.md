@@ -15,7 +15,7 @@ Este proyecto implementa la separación de fuentes de audio monoaural utilizando
 git clone <repo>
 cd nmf-audio-separation
 pip install -r requirements.txt
-python main.py
+jupyter notebook notebooks/main_final.ipynb
 ```
 
 ## ⚙️ Pipeline del Proyecto
@@ -26,42 +26,3 @@ python main.py
 4. **Factorización NMF:** Aproximación $X \approx WH$ sujeto a $W \geq 0, H \geq 0$. $W \in \mathbb{R}^{F \times k}$ captura las plantillas espectrales y $H \in \mathbb{R}^{k \times T}$ las activaciones temporales. Proyección al ortante no-negativo usando $\max(\cdot,0)$.
 5. **Reconstrucción (iSTFT):** Agrupación de las columnas de $W$ correspondientes a cada fuente y aplicación de la Transformada Inversa de Fourier a Corto Plazo utilizando la fase original de la mezcla.
 6. **Evaluación:** Cálculo del RMSE sobre particiones temporales contiguas (70% Train, 15% Val, 15% Test).
-
-## 📂 Estructura del Repositorio
-
-```text
-audio-nmf-separation/
-│
-├── README.md                        ← Documentación principal del proyecto
-├── CONTRIBUTING.md                  ← Instrucciones para el equipo de desarrollo
-├── LICENSE                          ← Licencia MIT
-├── .gitignore                       ← Reglas de exclusión para Git
-├── requirements.txt                 ← Dependencias del proyecto
-│
-├── notebooks/                       ← Jupyter Notebooks para Colab
-│   ├── 00_EDA.ipynb                 ← Análisis exploratorio de MUSAN
-│   ├── 01_BCGD_implementation.ipynb ← Algoritmo 1 (BCGD) y optimizadores
-│   ├── 02_experiments.ipynb         ← Comparativa GD vs Momentum vs Nesterov
-│   └── 03_source_separation.ipynb   ← Reconstrucción de audio y evaluación
-│
-├── src/                             ← Código fuente empaquetado
-│   ├── __init__.py
-│   ├── bcgd.py                      ← Implementación core de NMF y optimizadores
-│   ├── audio_utils.py               ← Procesamiento de señales (STFT, iSTFT, mezclas)
-│   ├── nmf_eval.py                  ← Algoritmo 2 (held-out evaluation) y métricas
-│   └── visualization.py             ← Generación de espectrogramas y curvas de pérdida
-│
-├── data/                            ← Datos locales (No versionados en GitHub)
-│   └── .gitkeep                     
-│
-├── outputs/                         ← Artefactos generados
-│   ├── figures/                     ← Gráficas en alta calidad (PNG/PDF)
-│   └── audio/                       ← Archivos .wav de señales reconstruidas
-│
-├── report/                          
-│   └── report_draft.md              ← Borrador del reporte académico (max. 6 pág)
-│
-└── poster/
-    └── poster_draft.md              ← Borrador del póster final
-
-```
